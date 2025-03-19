@@ -8,7 +8,7 @@ function ExamCodeForm() {
     <p className="text-gray-400 text-sm mt-1">Access your secure examination environment</p>
     <input
       type="text"
-      placeholder="Enter exam code (e.g., EX-2023-001)"
+      placeholder="Enter exam code (e.g., EX-2025-001)"
       className="w-full p-3 mt-4 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
     />
     <button className="w-full mt-4 p-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg">
