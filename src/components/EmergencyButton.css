@@ -1,0 +1,75 @@
+.emergency-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+  
+  .modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .modal-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .modal-buttons button:first-child {
+    background: #ff5252;
+    color: white;
+  }
+  
+  .modal-buttons button:last-child {
+    background: #666;
+    color: white;
+  }
+  
+  .dark .modal-content {
+    background: rgba(50, 50, 50, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (max-width: 600px) {
+    .emergency-btn {
+      bottom: 20px;
+      right: 20px;
+      padding: 15px;
+    }
+  }

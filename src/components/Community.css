@@ -1,0 +1,128 @@
+.community {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .community h2 {
+    color: #ff5252;
+    margin-bottom: 20px;
+  }
+  
+  .forum {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .forum h3 {
+    color: #ff5252;
+    margin-bottom: 15px;
+  }
+  
+  .post-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .post-input textarea {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .post-input button {
+    background: #ff5252;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    align-self: flex-end;
+    cursor: pointer;
+  }
+  
+  .post {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .replies {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  
+  .reply {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .replies input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .webinars {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .webinars h3 {
+    color: #ff5252;
+    margin-bottom: 10px;
+  }
+  
+  .webinar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+  }
+  
+  .webinar-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .webinar-form input {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .webinar-form button {
+    background: #6200ea;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  
+  .dark .community .forum,
+  .dark .community .post,
+  .dark .community .replies input,
+  .dark .community .webinars,
+  .dark .community .webinar-form input,
+  .dark .community .post-input textarea {
+    background: rgba(50, 50, 50, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+  }

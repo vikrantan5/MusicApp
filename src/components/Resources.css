@@ -1,0 +1,109 @@
+.resources {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .resources h2 {
+    color: #ff5252;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
+  
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .resource-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .resource-card h3 {
+    color: #ff5252;
+    margin-bottom: 10px;
+  }
+  
+  .resource-card p {
+    margin-bottom: 10px;
+  }
+  
+  .resource-card a {
+    color: #6200ea;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .resource-card a:hover {
+    text-decoration: underline;
+  }
+  
+  .chatbot {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .chatbot h3 {
+    color: #ff5252;
+    margin-bottom: 10px;
+  }
+  
+  .chat-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .chat-input button {
+    background: #6200ea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  
+  .dark .resources .search-bar,
+  .dark .resources .resource-card,
+  .dark .resources .chatbot,
+  .dark .resources .chat-input input {
+    background: rgba(50, 50, 50, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (max-width: 600px) {
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+    .chat-input {
+      flex-direction: column;
+    }
+    .chat-input button {
+      width: 100%;
+    }
+  }

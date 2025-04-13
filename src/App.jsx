@@ -1,81 +1,115 @@
-import React, { useState } from 'react'; // ✅ Import useState
-
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Login from "./components/Login";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useContext, useState } from 'react';
+import { ThemeContext } from './context/ThemeContext';
+import { ToastContainer } from 'react-toastify';
+import SymptomChecker from './components/SymptomChecker';
+import Dashboard from './components/Dashboard';
+import EmergencyButton from './components/EmergencyButton';
+import Resources from './components/Resources';
+import Community from './components/Community';
+import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const [page, setPage] = useState("home"); // ✅ Now useState is recognized
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
-    <div className="bg-gray-900 min-h-screen">
-      <Navbar setPage={setPage} />
-      {page === "home" ? <Hero /> : <Login />}
-      
-    </div>
+    <Router>
+      <div className={`app ${theme}`}>
+        <motion.header
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="navbar">
+            <Link to="/" className="logo" onClick={closeMenu}>
+              <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                  stroke="#ff5252"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                  fill="#ff5252"
+                />
+              </svg>
+              HeartGuard
+            </Link>
+            <button
+              className="hamburger"
+              onClick={toggleMenu}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.nav
+                  className="mobile-nav"
+                  initial={{ x: '100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '100%' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Link to="/checker" onClick={closeMenu}>Symptom Checker</Link>
+                  <Link to="/dashboard" onClick={closeMenu}>Dashboard</Link>
+                  <Link to="/resources" onClick={closeMenu}>Resources</Link>
+                  <Link to="/community" onClick={closeMenu}>Community</Link>
+                  <button onClick={toggleTheme} className="theme-toggle">
+                    {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+                  </button>
+                </motion.nav>
+              )}
+            </AnimatePresence>
+            <nav className="desktop-nav">
+              <Link to="/checker">Symptom Checker</Link>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/resources">Resources</Link>
+              <Link to="/community">Community</Link>
+              <button onClick={toggleTheme} className="theme-toggle">
+                {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+              </button>
+            </nav>
+          </div>
+        </motion.header>
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
+          <Routes>
+            <Route path="/checker" element={<SymptomChecker />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/" element={<SymptomChecker />} />
+          </Routes>
+        </motion.main>
+        <EmergencyButton />
+        <motion.footer
+          initial={{ y: 50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p>Disclaimer: This tool is not a substitute for professional medical advice.</p>
+        </motion.footer>
+        <ToastContainer position="top-right" autoClose={3000} />
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const data =[
-//   {name:"Millionaire" , Artist:"Honey Singh" , image:"https://plus.unsplash.com/premium_photo-1676299910876-747eeb0c11dc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3F1YXJlfGVufDB8fDB8fHww" ,added:false},
-//   {name:"Attention" , Artist:"Charlie Puth" , image:"https://images.unsplash.com/photo-1597589827317-4c6d6e0a90bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3F1YXJlfGVufDB8fDB8fHww",added:false},
-//   {name:"Brown Rang" , Artist:"Honey Singh" , image:"https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNxdWFyZXxlbnwwfHwwfHx8MA%3D%3D",added:false},
-//   {name:"After Hours" , Artist:"Weeknd" , image:"https://images.unsplash.com/photo-1589149098258-3e9102cd63d3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHNxdWFyZXxlbnwwfHwwfHx8MA%3D%3D",added:false},
-//   {name:"Ankhon Ankhon" , Artist:"Honey Singh" , image:"https://plus.unsplash.com/premium_photo-1681400272268-5121ddcb9a43?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fHNxdWFyZXxlbnwwfHwwfHx8MA%3D%3D",added:false},
-//   {name:"Imaginary" , Artist:"Imraan Khan" , image:"https://images.unsplash.com/photo-1592660716763-09efba6db4e3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHNxdWFyZXxlbnwwfHwwfHx8MA%3D%3D",added:false},
-//   {name:"Vardaan" , Artist:"Carryminati" , image:"https://plus.unsplash.com/premium_photo-1683129653857-8db3e20ad791?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjZ8fHNxdWFyZXxlbnwwfHwwfHx8MA%3D%3D",added:false},
-//   {name:"Slava Funk" , Artist:"Phonk" , image:"https://images.unsplash.com/photo-1612392549296-c7623f23665a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fHNxdWFyZXxlbnwwfHwwfHx8MA%3D%3D",added:false},
-//   {name:"Diamond Ni" , Artist:"unknown" , image:"https://images.unsplash.com/photo-1573538447152-e6fe80357e8f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTl8fHNxdWFyZXxlbnwwfHwwfHx8MA%3D%3D",added:false}
-// ];
-
-
-// const [val , setVal] = useState(data);
-
-// const clickToChange = (changeindex)=>{
-//   setVal((prev)=>{
-//     return prev.map((item , index)=>{
-//       if(index ===changeindex) return{...item , added : !item.added};
-      
-//       return item;
-//     })
-    
-//   })
-// }
-
-
-
-
-
-// return
-
-
-// <div className='h-screen w-full bg-zinc-200 flex-col'>
-// <Navbar1 data={val}/>
-
-// <div className='px-20 mt-15 flex justify-center items-center flex-wrap gap-10'>
-
-//     {val.map((obj , index)=>(
-//       <Card key={index} index={index} clickchange={clickToChange} data={obj}/>
-//     ))}
-
-// </div>
-
-
-// </div>

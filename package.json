@@ -13,9 +13,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/types": "^7.27.0",
     "@tailwindcss/vite": "^4.0.14",
+    "axios": "^1.8.4",
+    "chart.js": "^4.4.8",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "chartjs-plugin-zoom": "^2.2.0",
+    "framer-motion": "^12.6.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^6.30.0",
+    "react-toastify": "^11.0.5",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
